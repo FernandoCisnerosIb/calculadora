@@ -13,10 +13,17 @@
 <body style="background-color: grey">
 	<style type="text/css">
 		.btn{
-			height: 80px;
+			height: 85px;
 			background-color: #2c2c2c;
 			color:white;
 			font-size: 40px;
+			text-align: center;
+		}
+		.pan{
+			height: 85px;
+			background-color: #2c2c2c;
+			color: white;
+			font-size: 50px;
 			text-align: center;
 		}
 		.container{
@@ -25,47 +32,161 @@
 	</style>
 	<div class="container">
 		<div class="row">
-			<div class="col-12 btn bdis border"></div>
+			<div class="col-12 pan border border" id="resultado"></div>
 		</div>
 
 		<div class="row">
-			<button class="col-3 btn bac border">AC</button>
+			<button class="col-3 btn border" id="reset">AC</button>
 			<button class="col-3 btn border"></button>
 			<button class="col-3 btn border"></button>
-			<button class="col-3 btn bdiv border">/</button>
+			<button class="col-3 btn border" style="color: cyan" id="division">/</button>
 		</div>
 
 		<div class="row">
-			<button class="col-3 btn b7 border">7</button>
-			<button class="col-3 btn b8 border">8</button>
-			<button class="col-3 btn b9 border">9</button>
-			<button class="col-3 btn bx border">x</button>
+			<button class="col-3 btn border" id="siete">7</button>
+			<button class="col-3 btn border" id="ocho">8</button>
+			<button class="col-3 btn border" id="nueve">9</button>
+			<button class="col-3 btn border" style="color: cyan" id="multiplicacion">x</button>
 		</div>
 
 		<div class="row">
-			<button class="col-3 btn b4 border">4</button>
-			<button class="col-3 btn b5 border">5</button>
-			<button class="col-3 btn b6 border">6</button>
-			<button class="col-3 btn bres border">-</button>
+			<button class="col-3 btn border" id="cuatro">4</button>
+			<button class="col-3 btn border" id="cinco">5</button>
+			<button class="col-3 btn border" id="seis">6</button>
+			<button class="col-3 btn bres border" style="color: cyan" id="resta">-</button>
 		</div>
 
 		<div class="row">
-			<button class="col-3 btn b1 border">1</button>
-			<button class="col-3 btn b2 border">2</button>
-			<button class="col-3 btn b3 border">3</button>
-			<button class="col-3 btn bsum border">+</button>
+			<button class="col-3 btn border" id="uno">1</button>
+			<button class="col-3 btn border" id="dos">2</button>
+			<button class="col-3 btn border" id="tres">3</button>
+			<button class="col-3 btn border" style="color: cyan" id="suma">+</button>
 		</div>
 
 		<div class="row">
-			<button class="col-6 btn bcero border">0</button>
-			<button class="col-3 btn bpunto border">.</button>
-			<button class="col-3 btn bigual border">=</button>
+			<button class="col-6 btn border" id="cero">0</button>
+			<button class="col-3 btn border" id="punto"></button>
+			<button class="col-3 btn border" style="color: cyan" id="igual">=</button>
 		</div>
 	</div>
 </body>
 </html>
 <script>
 		$(document).ready(function(){
+			var operandoa;
+            var operandob;
+            var operacion;	
+
+            function init(){
+  
+  var resultado = document.getElementById('resultado');
+  var reset = document.getElementById('reset');
+  var suma = document.getElementById('suma');
+  var resta = document.getElementById('resta');
+  var multiplicacion = document.getElementById('multiplicacion');
+  var division = document.getElementById('division');
+  var igual = document.getElementById('igual');
+  var uno = document.getElementById('uno');
+  var dos = document.getElementById('dos');
+  var tres = document.getElementById('tres');
+  var cuatro = document.getElementById('cuatro');
+  var cinco = document.getElementById('cinco');
+  var seis = document.getElementById('seis');
+  var siete = document.getElementById('siete');
+  var ocho = document.getElementById('ocho');
+  var nueve = document.getElementById('nueve');
+  var cero = document.getElementById('cero');
+}
+
+
+  uno.onclick = function(e){
+      resultado.textContent = resultado.textContent  + "1";
+  }
+  dos.onclick = function(e){
+      resultado.textContent = resultado.textContent  + "2";
+  }
+  tres.onclick = function(e){
+      resultado.textContent = resultado.textContent  + "3";
+  }
+  cuatro.onclick = function(e){
+      resultado.textContent = resultado.textContent  + "4";
+  }
+  cinco.onclick = function(e){
+      resultado.textContent = resultado.textContent  + "5";
+  }
+  seis.onclick = function(e){
+      resultado.textContent = resultado.textContent  + "6";
+  }
+  siete.onclick = function(e){
+      resultado.textContent = resultado.textContent  + "7";
+  }
+  ocho.onclick = function(e){
+      resultado.textContent = resultado.textContent  + "8";
+  }
+  nueve.onclick = function(e){
+      resultado.textContent = resultado.textContent  + "9";
+  }
+  cero.onclick = function(e){
+      resultado.textContent = resultado.textContent  + "0";
+  }
+  reset.onclick = function(e){
+      resetear();
+  }
+  suma.onclick = function(e){
+      operandoa = resultado.textContent;
+      operacion = "+";
+      limpiar();
+  }
+  resta.onclick = function(e){
+      operandoa = resultado.textContent;
+      operacion = "-";
+      limpiar();
+  }
+  multiplicacion.onclick = function(e){
+      operandoa = resultado.textContent;
+      operacion = "*";
+      limpiar();
+  }
+  division.onclick = function(e){
+      operandoa = resultado.textContent;
+      operacion = "/";
+      limpiar();
+  }
+  igual.onclick = function(e){
+      operandob = resultado.textContent;
+      resolver();
+  }
+
+  function limpiar(){
+  resultado.textContent = "";
+}
+function resetear(){
+  resultado.textContent = "";
+  operandoa = 0;
+  operandob = 0;
+  operacion = "";
+}
+
+
+function resolver(){
+  var res = 0;
+  switch(operacion){
+    case "+":
+      res = parseFloat(operandoa) + parseFloat(operandob);
+      break;
+    case "-":
+        res = parseFloat(operandoa) - parseFloat(operandob);
+        break;
+    case "*":
+      res = parseFloat(operandoa) * parseFloat(operandob);
+      break;
+    case "/":
+      res = parseFloat(operandoa) / parseFloat(operandob);
+      break;
+  }
+  resetear();
+  resultado.textContent = res;
+}
 
 		})
 </script>
